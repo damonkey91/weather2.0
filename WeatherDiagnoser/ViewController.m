@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 - (IBAction)generateButton:(id)sender {
     float experience = self.temperature + self.windspeed;

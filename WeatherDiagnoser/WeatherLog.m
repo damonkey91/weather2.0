@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    [self.view setBackgroundColor: [UIColor colorWithRed:(0.2) green:0.3 blue:0.45 alpha:1]];
     self.logsOfWeather = [[NSUserDefaults standardUserDefaults]objectForKey:@"fulLog"];
     
     // Uncomment the following line to preserve selection between presentations.
