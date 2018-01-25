@@ -69,9 +69,8 @@
 - (IBAction)logPressed:(id)sender {
     NSString *string = [NSString stringWithFormat:@"Temp: %.1f Windspeed: %.1f %@", self.temperature, self.windspeed, self.feeling];
     NSMutableArray *array;
+    //Checks if array exists. And then adds value to array.
     if ([[NSUserDefaults standardUserDefaults]objectForKey:@"fulLog"]) {
-        
-        //[[NSMutableArray alloc]initWithArray:your_array_name];
         array = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"fulLog"]];
         
         [array addObject:string];

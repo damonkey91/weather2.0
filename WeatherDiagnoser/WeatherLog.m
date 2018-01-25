@@ -23,14 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
-    self.windspeed = [[NSUserDefaults standardUserDefaults]floatForKey:@"windSpeed"];
-    self.temp = [[NSUserDefaults standardUserDefaults]floatForKey:@"temp"];
-    self.feeling = [[NSUserDefaults standardUserDefaults]objectForKey:@"feeling"];
-    self.dailylog =[NSString stringWithFormat:@"Temp: %.1f Windspeed: %.1f %@", self.temp, self.windspeed, self.feeling];
-    [self.logsOfWeather addObject:self.dailylog];
-    
-    */
+   
     self.logsOfWeather = [[NSUserDefaults standardUserDefaults]objectForKey:@"fulLog"];
     
     // Uncomment the following line to preserve selection between presentations.
