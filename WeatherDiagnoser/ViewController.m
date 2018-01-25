@@ -67,13 +67,20 @@
 }
 
 - (IBAction)logPressed:(id)sender {
-    [[NSUserDefaults standardUserDefaults]setObject:_feeling forKey:@"feeling"];
-    [[NSUserDefaults standardUserDefaults]setFloat:self.windspeed forKey:@"windspeed"];
-    [[NSUserDefaults standardUserDefaults]setFloat:self.temperature forKey:@"temp"];
-    
-    [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"Temp: %.1f Windspeed: %.1f %@", self.temperature, self.windspeed, self.feeling]forKey:@"fullLog"];
-
-    
+    NSString *string = [NSString stringWithFormat:@"Temp: %.1f Windspeed: %.1f %@", self.temperature, self.windspeed, self.feeling];
+    NSMutableArray *array;
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"fulLog"]) {
+        
+        //[[NSMutableArray alloc]initWithArray:your_array_name];
+        array = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"fulLog"]];
+        
+        [array addObject:string];
+        
+         [[NSUserDefaults standardUserDefaults]setObject:array forKey:@"fulLog"];
+    }else{
+        array = @[string].mutableCopy;
+        [[NSUserDefaults standardUserDefaults]setObject:array forKey:@"fulLog"];
+    }
 }
 
 @end

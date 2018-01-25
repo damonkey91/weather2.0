@@ -13,7 +13,7 @@
 @property (nonatomic) float windspeed;
 @property (nonatomic) float temp;
 @property (nonatomic) NSString* feeling;
-@property (nonatomic) NSMutableArray *logsOfWeather;
+@property (nonatomic) NSArray *logsOfWeather;
 @property (nonatomic) NSString *dailylog;
 
 
@@ -23,13 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    /*
     self.windspeed = [[NSUserDefaults standardUserDefaults]floatForKey:@"windSpeed"];
     self.temp = [[NSUserDefaults standardUserDefaults]floatForKey:@"temp"];
     self.feeling = [[NSUserDefaults standardUserDefaults]objectForKey:@"feeling"];
     self.dailylog =[NSString stringWithFormat:@"Temp: %.1f Windspeed: %.1f %@", self.temp, self.windspeed, self.feeling];
     [self.logsOfWeather addObject:self.dailylog];
     
+    */
+    self.logsOfWeather = [[NSUserDefaults standardUserDefaults]objectForKey:@"fulLog"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -50,13 +52,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.logsOfWeather.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"weatherAdapter" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"Temp: %.1f Windspeed: %.1f %@", self.temp, self.windspeed, self.feeling];
+    
+        cell.textLabel.text = self.logsOfWeather[indexPath.row];
+    
+    
     
     return cell;
 }
